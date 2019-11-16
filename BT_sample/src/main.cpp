@@ -1,6 +1,5 @@
 #include "wait_for_button.h"
 #include "movebase_client.h"
-#include "alarm_event_led.h"
 #include "chk_low_battery.h"
 #include "always_running.h"
 #include <behaviortree_cpp_v3/bt_factory.h>
@@ -23,7 +22,6 @@ int main(int argc, char **argv) {
   factory.registerNodeType<MoveBase>("MoveBase");
   factory.registerSimpleCondition("CheckBattery", CheckBattery, {BT::InputPort<int>("wait_tick")});
   factory.registerNodeType<WaitForButton>("WaitForButton");
-  factory.registerNodeType<AlarmEventLED>("AlarmEventLED");
   factory.registerNodeType<AlwaysRunning>("AlwaysRunning");
 
   // Trees are created at deployment-time (i.e. at run-time, but only once at
